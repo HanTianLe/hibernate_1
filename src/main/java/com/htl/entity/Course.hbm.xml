@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.htl.entity.Course" table="t_course">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+
+        <set name="accounts" table="account_course" lazy="true">
+            <key column="cid"/>
+            <many-to-many class="com.htl.entity.Account" column="aid"/>
+        </set>
+    </class>
+
+</hibernate-mapping>
